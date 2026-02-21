@@ -100,3 +100,80 @@ del.addEventListener("click",()=>{
     text.textContent = operation;
 });
 
+equal.addEventListener("click",()=>
+{
+    operation=calculate(operation);
+    text.textContent=operation;
+});
+
+function tokenize(op)
+{
+    let tokens = [];
+    let number = "";
+
+    for(let i=0;i<op.length;i++)
+    {
+        let ch = op[i];
+        if("0123456789.".includes(op[i]))
+        {
+            number+=ch;
+        }
+        else{
+            if(number!=="")
+            {
+                tokens.push(parseFloat(number));
+                number="";
+            }
+          tokens.push(ch);  
+        }
+    }
+        if(number!=="")
+        {
+            tokens.push(parseFloat(number));
+        }
+    
+    return tokens;
+}
+
+function solveMulDiv(tokens) {
+    let result = [tokens[0]];
+
+    for (let i = 1; i < tokens.length; i += 2) {
+        let operator = tokens[i];
+        let nextNumber = tokens[i + 1];
+
+        if (operator === "*") {
+            result[result.length - 1] *= nextNumber;
+        } else if (operator === "/") {
+            result[result.length - 1] /= nextNumber;
+        } else {
+            result.push(operator);
+            result.push(nextNumber);
+        }
+    }
+
+    return result;
+}
+
+function solveAddSub(tokens) {
+    let result = tokens[0];
+
+    for (let i = 1; i < tokens.length; i += 2) {
+        let operator = tokens[i];
+        let num = tokens[i + 1];
+
+        if (operator === "+") result += num;
+        if (operator === "-") result -= num;
+    }
+
+    return result;
+}
+function calculate(operation) {
+    if (operation === "") return "";
+    let tokens = tokenize(operation);
+    if (tokens.length < 1) return "";
+    tokens = solveMulDiv(tokens);
+    let result = solveAddSub(tokens);
+
+    return result;
+}
