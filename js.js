@@ -32,5 +32,71 @@ clear.addEventListener("click",()=>{
 
 n1.addEventListener("click",()=>{
     operation+="1";
-    text.textContent+="1";
+    text.textContent = operation;
 });
+
+n2.addEventListener("click",()=>{
+    operation+="2";
+    text.textContent = operation;
+});
+n3.addEventListener("click",()=>{
+    operation+="3";
+    text.textContent = operation;
+});
+n4.addEventListener("click",()=>{
+    operation+="4";
+    text.textContent = operation;
+});
+n5.addEventListener("click",()=>{
+    operation+="5";
+    text.textContent = operation;
+});
+n6.addEventListener("click",()=>{
+    operation+="6";
+    text.textContent = operation;
+});
+n7.addEventListener("click",()=>{
+    operation+="7";
+    text.textContent = operation;
+});
+n8.addEventListener("click",()=>{
+    operation+="8";
+    text.textContent = operation;
+});
+n9.addEventListener("click",()=>{
+    operation+="9";
+    text.textContent = operation;
+});
+n0.addEventListener("click",()=>{
+    operation+="0";
+    text.textContent = operation;
+});
+n00.addEventListener("click",()=>{
+    operation+="00";
+    text.textContent = operation;
+});
+add.addEventListener("click",()=>{
+    operation+="+";
+    text.textContent = operation;
+});
+minus.addEventListener("click",()=>{
+    operation+="-";
+    text.textContent = operation;
+});
+multiply.addEventListener("click",()=>{
+    operation+="*";
+    text.textContent = operation;
+});
+divide.addEventListener("click",()=>{
+    operation+="/";
+    text.textContent = operation;
+});
+percent.addEventListener("click",()=>{
+    operation+="%";
+    text.textContent = operation;
+});
+del.addEventListener("click",()=>{
+    operation=operation.slice(0,-1);
+    text.textContent = operation;
+});
+

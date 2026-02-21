@@ -33,6 +33,12 @@ button{
 }
 
 .text{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
     justify-self: center;
     width:50%;
     height:100px;
