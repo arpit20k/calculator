@@ -142,7 +142,10 @@ function solveMulDiv(tokens) {
         let operator = tokens[i];
         let nextNumber = tokens[i + 1];
 
-        if (operator === "*") {
+        if(operator==="%"){
+        result[result.length-1]*=nextNumber/=100;
+
+        }else if (operator === "*") {
             result[result.length - 1] *= nextNumber;
         } else if (operator === "/") {
             result[result.length - 1] /= nextNumber;
