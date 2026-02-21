@@ -256,7 +256,7 @@ function solveMulDiv(tokens) {
     let start =1;
     let result;
     result = [tokens[0]];
-    if(tokens[0]==="-");{
+    if(tokens[0]==="-"){
         result = [tokens[1]*-1];
         start =2;
     }
@@ -265,7 +265,7 @@ function solveMulDiv(tokens) {
         let nextNumber = tokens[i + 1];
         if((operator==="%"||operator==="/"||operator === "*")&&nextNumber=="-")
         {
-            nextNumber = tokens[i+2]*-1;
+            nextNumber = tokens[i+2]*(-1);
             if(operator==="%"){
         result[result.length-1]*=nextNumber/=100;
         }else if (operator === "*") {
@@ -297,14 +297,27 @@ function solveMulDiv(tokens) {
 }
 
 function solveAddSub(tokens) {
-    let result = tokens[0];
-
-    for (let i = 1; i < tokens.length; i += 2) {
+    let start =1;
+    let result;
+    result = tokens[0];
+    if(tokens[0]==="-"){
+        result = tokens[1]*-1;
+        start =2;
+    }
+    for (let i = start; i < tokens.length; i += 2) {
         let operator = tokens[i];
         let num = tokens[i + 1];
-
-        if (operator === "+") result += num;
-        if (operator === "-") result -= num;
+        if((operator==="+"||operator==="-")&&num=="-")
+        {
+            num=tokens[i+2]*-1;
+            if (operator === "+") result += num;
+           if (operator === "-") result -= num;
+           i++;
+        }
+        else{
+            if (operator === "+") result += num;
+           if (operator === "-") result -= num;
+        }
     }
 
     return result;
